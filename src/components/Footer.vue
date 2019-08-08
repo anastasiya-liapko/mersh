@@ -56,13 +56,13 @@
         </p>
 
         <div class="social d-flex flex-wrap justify-content-center align-items-center">
-          <a class="social__item social__item_type_fb">
+          <a v-if="facebookVisible" :href="facebook" class="social__item social__item_type_fb">
             <span class="social__icon icon-fb d-flex justify-content-center align-items-center"></span>
           </a>
-          <a class="social__item social__item_type_insta">
+          <a v-if="instagramVisible" :href="instagram" class="social__item social__item_type_insta">
             <span class="social__icon icon-insta d-flex justify-content-center align-items-center"></span>
           </a>
-          <a class="social__item social__item_type_youtube">
+          <a v-if="youtubeVisible" :href="youtube" class="social__item social__item_type_youtube">
             <span class="social__icon icon-youtube d-flex justify-content-center align-items-center"></span>
           </a>
         </div>
@@ -85,6 +85,12 @@ export default {
   data () {
     return {
       phone: '',
+      facebook: '',
+      instagram: '',
+      youtube: '',
+      facebookVisible: 1,
+      instagramVisible: 1,
+      youtubeVisible: 1,
       domen: process.env.VUE_APP_DOMEN
     }
   },
@@ -109,6 +115,26 @@ export default {
         .then(res => {
           // console.log(res)
           context.phone = res.data.phone
+        })
+        .catch(error => console.log(error))
+
+      axios.get(context.domen + '/api/info/social')
+        .then(res => {
+          // console.log(res)
+          res.data.forEach(function (elem) {
+            if (elem.title === 'Facebook') {
+              context.facebook = elem.link
+              context.facebookVisible = elem['is_display']
+            }
+            if (elem.title === 'Instagram') {
+              context.instagram = elem.link
+              context.instagramVisible = elem['is_display']
+            }
+            if (elem.title === 'YouTube') {
+              context.youtube = elem.link
+              context.youtubeVisible = elem['is_display']
+            }
+          })
         })
         .catch(error => console.log(error))
     }
@@ -201,6 +227,7 @@ export default {
   margin: 0.260vw 0.521vw
   padding: 0.521vw
   &:hover
+    text-decoration: none
     cursor: pointer
     & .social__icon
       &::before

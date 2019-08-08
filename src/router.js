@@ -104,6 +104,9 @@ export default new Router({
     // }
   ],
   scrollBehavior (to, from, savedPosition) {
+    if (to.hash) {
+      return { selector: to.hash }
+    }
     return { x: 0, y: 0 }
   }
 })

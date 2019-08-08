@@ -86,7 +86,7 @@ export default {
     this.setTitle()
   },
   beforeDestroy () {
-    this.scroll(0)
+    // this.scroll(0)
   },
   methods: {
     ...mapActions([
@@ -135,7 +135,7 @@ export default {
       self.setOrder(array)
 
       if (this.totalPrice === 0) {
-        this.$router.push({ name: 'index' })
+        this.$router.push({ name: 'index', hash: '#catalog' })
       } else {
         axios.post('/post.php', self.cartProducts)
           .then(function (response) {

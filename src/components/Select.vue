@@ -42,7 +42,7 @@
             href="javascript:void(0)"
             @click="updateOption(name, option)"
             :class="{isSelected: option.value === selectedOption}">
-            {{ option.value }}
+            <span class="select__text">{{ option.value }}</span>
           </a>
         </li>
       </ul>
@@ -327,6 +327,11 @@ export default {
   &:hover
     cursor: pointer
 
+.select__text
+  margin-right: 0.573vw
+  white-space: nowrap
+  overflow: hidden
+
 .select__caret
   display: flex
   align-items: center
@@ -430,6 +435,9 @@ li
         font-size: calc(8px / #{$lose-m})
 
   // common styles
+  .select__text
+    margin-right: calc(11px / #{$lose-m})
+
   .select__menu
     box-shadow: 0 calc(6px / #{$lose-m}) calc(12px / #{$lose-m}) rgba(0, 0, 0, 0.175)
 
@@ -505,6 +513,9 @@ li
         font-size: calc(8px / #{$lose-s})
 
   // common styles
+  .select__text
+    margin-right: calc(11px / #{$lose-s})
+
   .select__menu
     box-shadow: 0 calc(6px / #{$lose-s}) calc(12px / #{$lose-s}) rgba(0, 0, 0, 0.175)
 
@@ -610,6 +621,9 @@ li
         font-size: calc(0.417vw * #{$gain-xs} * 1.7)
 
   // common styles
+  .select__text
+    margin-right: calc(0.573vw * #{$gain-xs} * 1.7)
+
   .select__menu
     box-shadow: 0 calc(0.313vw * #{$gain-xs}) calc(0.625vw * #{$gain-xs}) rgba(0, 0, 0, 0.175)
 </style>

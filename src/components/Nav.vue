@@ -35,10 +35,10 @@
           v-bind:key="navItem.id">
           <a href="#"
             :id="'js-nav__list-link-' + navItem.id"
-            :data-toggle="navItem.name === 'Изготовление на заказ' ? 'modal' : ''"
-            :data-target="navItem.name === 'Изготовление на заказ' ? '#js-order' : ''"
             class="nav__list-link nav-transition-group__item d-inline-block"
             v-bind:key="'nav__list-link-' + navItem.id"
+            :data-toggle="navItem.name === 'Изготовление на заказ' ? 'modal' : ''"
+            :data-target="navItem.name === 'Изготовление на заказ' ? '#js-order' : ''"
             @click="toggleDropdown(navItem)">
             <span class="hover-mersh d-flex flex-nowrap"
               :class="{'hover-mersh_type_dropdown': navItem.childs}"
@@ -217,20 +217,27 @@ export default {
       }
     },
     routeTo (name, param) {
-        this.$router.push({ name: name, params: { name: param } })
-        this.closeNav()
-        this.clickedId = ''
-        this.clicked = 0
+      this.$router.push({ name: name, params: { name: param } })
+      this.closeNav()
+      this.clickedId = ''
+      this.clicked = 0
     },
     toggleDropdown (elem) {
-      this.clicked = this.clickedId === elem.id ? 1 : 0
-      this.clickedId = elem.id
-      this.showDropdownById = this.showDropdownById === elem.id ? '' : elem.id
-      if (elem.childs === undefined) {
-        this.navigateToPage(elem)
-      } else if (elem.childs !== undefined && this.clicked) {
-        this.navigateToPage(elem)
+      if (elem.name.toLowerCase() === 'изготовление на заказ') {
+        this.closeNav()
+        // var item = document.querySelector('.nav__list-link[data-target="#js-order"]')
+        // item.setAttribute('data-toggle', 'modal')
+      } else {
+        this.clicked = this.clickedId === elem.id ? 1 : 0
+        this.clickedId = elem.id
+        this.showDropdownById = this.showDropdownById === elem.id ? '' : elem.id
+        if (elem.childs === undefined) {
+          this.navigateToPage(elem)
+        } else if (elem.childs !== undefined && this.clicked) {
+          this.navigateToPage(elem)
+        }
       }
+
     },
     hide (e) {
       var nav = document.querySelector('#js-nav')
@@ -316,6 +323,25 @@ export default {
   padding-bottom: 4.792vw
   list-style: none
   overflow-y: scroll
+  scrollbar-width: none
+  scrollbar-base-color: transparent
+  scrollbar-face-color: transparent
+  scrollbar-highlight-color: transparent
+  scrollbar-3dlight-color: transparent
+  scrollbar-shadow-color: transparent
+  scrollbar-darkshadow-color: transparent
+  scrollbar-track-color: transparent
+  scrollbar-arrow-color: transparent
+  -ms-scrollbar-base-color: transparent
+  -ms-scrollbar-face-color: transparent
+  -ms-scrollbar-highlight-color: transparent
+  -ms-scrollbar-3dlight-color: transparent
+  -ms-scrollbar-shadow-color: transparent
+  -ms-scrollbar-darkshadow-color: transparent
+  -ms-scrollbar-base-color: transparent
+  -ms-scrollbar-track-color: transparent
+  &::-webkit-scrollbar
+    display: none
 
 .nav__list-item
   background-color: $color-nav

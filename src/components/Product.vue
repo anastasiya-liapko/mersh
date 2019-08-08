@@ -31,7 +31,7 @@ import { hoverMershToggleDelay } from '@/mixins'
 export default {
   data () {
     return {
-      productImage: '',
+      productImage: '/img/product-placeholder.png',
       domen: process.env.VUE_APP_DOMEN
     }
   },
@@ -97,7 +97,7 @@ export default {
   width: 100%
   height: 100%
   object-fit: cover
-  transform: scale(1.1)
+  transform: scale(1.01)
   transition: transform 0.3s linear
 
 .product__name

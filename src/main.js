@@ -23,6 +23,8 @@ Vue.use(Vuelidate)
 Vue.use(PrettyCheckbox)
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 
+// Vue.templateCache = false
+
 new Vue({
   router,
   store,

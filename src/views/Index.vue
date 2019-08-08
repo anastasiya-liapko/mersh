@@ -15,7 +15,7 @@
           <div class="text index__about-text" v-html="info.txt"></div>
         </div>
 
-        <div class="catalog">
+        <div id="catalog" class="catalog">
           <h2 class="title catalog__title">КАТАЛОГ</h2>
           <div class="d-flex flex-wrap align-items-start justify-content-start">
             <router-link class="product product_type_category"
@@ -62,6 +62,9 @@ export default {
     this.fetch()
   },
   mounted () {
+    if (this.$route.hash === '#catalog') {
+      this.scrollToCatalog()
+    }
     var header = document.getElementById('js-header')
     header.classList.add('header_index')
   },
@@ -81,6 +84,17 @@ export default {
           context.categories = res.data.categories
         })
         .catch(error => console.log(error))
+    },
+    scrollToCatalog () {
+      var context = this
+      var catalog = document.getElementById('catalog')
+      var header = document.getElementById('js-header')
+      header.classList.add('sticky')
+      setTimeout (function () {
+        var rect = catalog.getBoundingClientRect().top
+        var headerHeight = header.offsetHeight
+        context.scroll(rect - headerHeight)
+      }, 500)
     }
   },
   components: {

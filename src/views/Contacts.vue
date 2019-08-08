@@ -66,7 +66,7 @@ export default {
 
       axios.get(context.domen + '/api/info/contacts')
         .then(res => {
-          console.log(res)
+          // console.log(res)
           context.contacts = res.data
         })
         .catch(error => console.log(error))

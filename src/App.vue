@@ -282,7 +282,7 @@ p
   padding-right: 10vw
   & p
     // padding-right: 192px
-    padding-right: 10vw
+    // padding-right: 10vw
   p:first-child
     // margin-bottom: 40px
     margin-bottom: 2.083vw
@@ -292,7 +292,6 @@ p
     line-height: 1.55
     font-weight: 700
     color: $color-text
-
 
 .slide-left-enter,
 .slide-left-enter-active
@@ -707,7 +706,7 @@ p
   .privacy__text
     padding-right: 0
     & p
-      padding-right: 0
+      // padding-right: 0
     p:first-child
       margin-bottom: calc(40px / #{$lose-m})
       font-size: calc(22px / #{$lose-m})

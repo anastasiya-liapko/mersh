@@ -18,7 +18,7 @@
             <div v-for="(image, i) in images"
               v-bind:key="'image' + i">
               <a>
-                <img :src="image.img" alt="">
+                <img class="lookbook__slider-img" :src="image.img" alt="">
               </a>
             </div>
           </app-slick>
@@ -65,7 +65,7 @@ export default {
           context.info = res.data.info
           context.main_image = res.data.main_image.img
           context.images = res.data.images
-          console.log(context.$refs.slick)
+          // console.log(context.$refs.slick)
         })
         .catch(error => console.log(error))
     }
@@ -132,6 +132,10 @@ export default {
   // height: 529px
   width: 34.375vw
   height: 27.552vw
+  .lookbook__slider-img
+    width: 34.375vw
+    height: 27.552vw
+    object-fit: cover
 
 .lookbook__subtitle,
 .lookbook__text
@@ -163,6 +167,9 @@ export default {
   .lookbook__slider
     width: calc(660px / #{$lose-m})
     height: calc(529px / #{$lose-m})
+    .lookbook__slider-img
+      width: calc(660px / #{$lose-m})
+      height: calc(529px / #{$lose-m})
 
 @media(max-width: 991px)
   .lookbook
@@ -190,6 +197,9 @@ export default {
   .lookbook__slider
     width: calc(660px / #{$lose-s})
     height: calc(529px / #{$lose-s})
+    .lookbook__slider-img
+      width: calc(660px / #{$lose-s})
+      height: calc(529px / #{$lose-s})
 
 @media(max-width: 767px)
   .lookbook
@@ -217,6 +227,9 @@ export default {
   .lookbook__slider
     width: calc(660px / #{$lose-xs})
     height: calc(529px / #{$lose-xs})
+    .lookbook__slider-img
+      width: calc(660px / #{$lose-xs})
+      height: calc(529px / #{$lose-xs})
 
 @media(max-width: 575px)
   .lookbook
@@ -251,4 +264,7 @@ export default {
   .lookbook__slider
     width: calc(100vw - 30px)
     height: calc((100vw - 30px) * 80.15 / 100)
+    .lookbook__slider-img
+      width: calc(100vw - 30px)
+      height: calc((100vw - 30px) * 80.15 / 100)
 </style>

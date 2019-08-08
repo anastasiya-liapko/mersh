@@ -175,6 +175,13 @@ export default {
         .then(res => {
           // console.log(res)
           context.product = res.data
+          if (context.product.images.length === 0) {
+            context.product.images.push({
+              'id': 1,
+              'is_video': 0,
+              'content': '/img/product-placeholder.png'
+            })
+          }
           context.productPrice = res.data.info.price
           context.product.attributes.forEach( function (elem) {
             elem.touched = false
