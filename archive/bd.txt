@@ -1,0 +1,162 @@
+nav 
+{
+    id - int // id категории, коллекции
+    parent_id - int // id родительской категории
+    name - varchar(1000) // название
+    link - varchar(1000) // ссылка на страницу
+}
+
+categories_images
+{
+    id - int
+    category_id - int // id категории
+    image - varchar(1000) // путь к картинке
+}
+
+about 
+{
+    id - int
+    image - varchar(1000) // путь к картинке
+    foreword - text // предисловие (первый абзац)
+    text - text // текстовое описание
+}
+
+about_images 
+{   
+    id - int 
+    about_id - int // id о нас
+    image - varchar(1000) // путь к картинке
+    orderby - int // порядок
+    is_visible - boolean // отображать или нет
+}
+
+contacts
+{
+    id - int
+    foreword - text // предисловие (первый абзац)
+    text - text // текстовое описание
+    address - varchar(1000) // адрес
+    phone - varchar(1000) // телефон
+    mail - varchar(1000) // почта
+    map_image - varchar(1000) // изображение карты
+}
+
+payment
+{
+    id - int
+    foreword - text // предисловие (первый абзац)
+    text - text // текстовое описание
+}
+
+delivery
+{
+    id - int
+    foreword - text // предисловие (первый абзац)
+    text - text // текстовое описание
+}
+
+privacy
+{
+    id - int
+    foreword - text // предисловие (первый абзац)
+    text - text // текстовое описание
+}
+
+articles
+{
+    id - int
+    title - varchar(1000) // заголовок
+    foreword - text // предисловие (первый абзац)
+    text - text // текстовое описание
+}
+
+lookbook
+{
+    id - int
+    title - varchar(1000) // заголовок
+    foreword - text // предисловие (первый абзац)
+    text - text // текстовое описание
+}
+
+lookbook_images 
+{
+    id - int
+    about_id - int // id лукбука
+    image - varchar(1000) // путь к картинке
+    orderby - int // порядок
+    is_visible - boolean // отображать или нет
+}
+
+products {
+    id - int
+    category_id - int // id категории
+    collection_id - int // id коллекции
+    image - varchar(1000) // путь к картинке
+    title - varchar(1000) // заголовок
+    foreword - text // предисловие (первый абзац)
+    text - text // текстовое описание
+    price - float // цена
+}
+
+products_attributes
+{
+    id - int
+    product_id - int // id продукта
+    name - varchar(1000) // название атрибута
+    orderby - int // порядок
+    is_visible - boolean // отображать или нет
+}
+
+products_gallery
+{
+    id - int
+    product_id - int // id продукта
+    type - varchar(255) // тип контента: видео или изображение
+    content - varchar(1000) // путь к видео или картинке
+    orderby - int // порядок
+    is_visible - boolean // отображать или нет
+}
+
+calls
+{
+    id - int
+    dt - timestamp // дата поступления запроса
+    name - varchar(1000) // имя
+    phone - varchar(1000) // номер телефона
+    is_processed - boolean // обработана заявка или нет
+}
+
+individual_orders
+{
+    id - int
+    dt - timestamp // дата поступления запроса
+    name - varchar(1000) // имя
+    phone - varchar(1000) // номер телефона
+    mail - varchar(1000) // почта
+    message - text // комментарий
+    is_processed - boolean // обработана заявка или нет
+}
+
+orders
+{
+    id - int
+	order_number - int // номер заказа
+	product_id - int // id продукта
+	attribute_id - int // id атрибута
+	quantity - int // количество продуктов
+}
+
+customers
+{
+    id - int
+    order_number - int // номер заказа
+    name - varchar(1000) // имя
+    phone - varchar(1000) // номер телефона
+    mail - varchar(1000) // почта
+    delivery - varchar(1000) // тип доставки
+    address - varchar(1000) // адрес
+    payment - varchar(1000) // тип оплаты
+    message - text // комментарий
+    is_paid - boolean // оплачен или нет
+    is_processed - boolean // обработан заказ или нет
+}
